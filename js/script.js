@@ -1065,3 +1065,1005 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+
+
+/* ================= MOBILE MENU ================= */
+// 
+// const menuBtn = document.getElementById("menuBtn");
+// const mainNav = document.getElementById("mainNav");
+// 
+// menuBtn.addEventListener("click", () => {
+    // mainNav.classList.toggle("open");
+// });
+// 
+// 
+// /* Close menu after clicking a link */
+// 
+// const navLinks = document.querySelectorAll("#mainNav a");
+// 
+// navLinks.forEach(link => {
+    // link.addEventListener("click", () => {
+        // mainNav.classList.remove("open");
+    // });
+// });
+
+
+/* ================= SCROLL ANIMATION ================= */
+
+const revealElements = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("show");
+
+                observer.unobserve(entry.target);
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.15
+    }
+);
+
+
+revealElements.forEach(element => {
+    revealObserver.observe(element);
+});
+/* ================= TESTIMONIAL VIDEOS ================= */
+/* ================= TESTIMONIAL VIDEOS ================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const videoGrid = document.getElementById("videoGrid");
+
+  // Testimonials page par hi ye code chalega
+  if (!videoGrid) return;
+
+
+  const testimonials = [
+    {
+      youtubeUrl: "https://youtu.be/CZQ0BoMkDN0",
+      title: "Hair Transplant Experience",
+      patient: "MARMM Patient"
+    },
+
+    {
+      youtubeUrl: "https://youtu.be/AOQ475mG5yk",
+      title: "Hair Transplant Experience",
+      patient: "MARMM Patient"
+    },
+
+    {
+      youtubeUrl: "https://youtu.be/23hoesjUAwA",
+      title: "Hair Restoration Journey",
+      patient: "MARMM Patient"
+    },
+
+    {
+      youtubeUrl: "https://youtu.be/VLo2-aYsGZc",
+      title: "Hair Transplant Journey",
+      patient: "MARMM Patient"
+    },
+
+    {
+      youtubeUrl: "https://youtu.be/Ys-U7RghNQo",
+      title: "Hair Restoration Experience",
+      patient: "MARMM Patient"
+    },
+
+    {
+      youtubeUrl: "https://youtu.be/BLm1ntRC_aU",
+      title: "My MARMM Journey",
+      patient: "MARMM Patient"
+    }
+  ];
+
+
+  /* ================= GET YOUTUBE ID ================= */
+
+  function getYouTubeID(url) {
+
+    const match = url.match(
+      /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([^?&/]+)/
+    );
+
+    return match ? match[1] : null;
+  }
+
+
+  /* ================= CREATE CARDS ================= */
+
+  testimonials.forEach(function (video) {
+
+    const videoId = getYouTubeID(video.youtubeUrl);
+
+    if (!videoId) return;
+
+
+    const card = document.createElement("div");
+
+    card.className = "video-card";
+
+
+    card.innerHTML = `
+      
+      <div class="video-thumbnail">
+
+        <img
+          src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg"
+          alt="${video.title}"
+        >
+
+        <div class="thumbnail-overlay"></div>
+
+        <div class="play-button"></div>
+
+      </div>
+
+
+      <div class="video-info">
+
+        <h3>${video.title}</h3>
+
+        <p class="patient-name">
+          ${video.patient}
+        </p>
+
+        <p class="patient-label">
+          Patient Testimonial
+        </p>
+
+      </div>
+
+    `;
+
+
+    /* ================= OPEN VIDEO ================= */
+
+    card.addEventListener("click", function () {
+
+      const modal = document.getElementById("videoModal");
+      const frame = document.getElementById("youtubeFrame");
+
+      if (!modal || !frame) return;
+
+
+      frame.src =
+        "https://www.youtube.com/embed/" +
+        videoId +
+        "?autoplay=1&rel=0";
+
+
+      modal.classList.add("show");
+
+      document.body.style.overflow = "hidden";
+
+    });
+
+
+    videoGrid.appendChild(card);
+
+  });
+
+
+  /* ================= CLOSE VIDEO ================= */
+
+  const closeModal =
+    document.getElementById("closeModal");
+
+  const modalOverlay =
+    document.getElementById("modalOverlay");
+
+
+  function closeTestimonialVideo() {
+
+    const modal =
+      document.getElementById("videoModal");
+
+    const frame =
+      document.getElementById("youtubeFrame");
+
+
+    if (frame) {
+      frame.src = "";
+    }
+
+
+    if (modal) {
+      modal.classList.remove("show");
+    }
+
+
+    document.body.style.overflow = "";
+
+  }
+
+
+  if (closeModal) {
+
+    closeModal.addEventListener(
+      "click",
+      closeTestimonialVideo
+    );
+
+  }
+
+
+  if (modalOverlay) {
+
+    modalOverlay.addEventListener(
+      "click",
+      closeTestimonialVideo
+    );
+
+  }
+
+
+  /* ================= ESC KEY ================= */
+
+  document.addEventListener("keydown", function (event) {
+
+    if (event.key === "Escape") {
+      closeTestimonialVideo();
+    }
+
+  });
+
+});
+
+/* =========================================================
+   MARMM THE KLINIK
+   SKIN TREATMENTS
+========================================================= */
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const mobileMenuBtn =
+    document.getElementById("mobileMenuBtn");
+
+const mobileMenu =
+    document.getElementById("mobileMenu");
+
+const mobileServicesBtn =
+    document.getElementById("mobileServicesBtn");
+
+const mobileSubmenu =
+    document.getElementById("mobileSubmenu");
+
+const serviceArrow =
+    document.getElementById("serviceArrow");
+
+
+/* =========================================================
+   OPEN / CLOSE MOBILE MENU
+========================================================= */
+
+if (mobileMenuBtn && mobileMenu) {
+
+    mobileMenuBtn.addEventListener(
+        "click",
+        function () {
+
+            mobileMenu.classList.toggle(
+                "active"
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   MOBILE SERVICES DROPDOWN
+========================================================= */
+
+if (
+    mobileServicesBtn &&
+    mobileSubmenu
+) {
+
+    mobileServicesBtn.addEventListener(
+        "click",
+        function () {
+
+            mobileSubmenu.classList.toggle(
+                "open"
+            );
+
+
+            if (
+                mobileSubmenu.classList.contains(
+                    "open"
+                )
+            ) {
+
+                serviceArrow.textContent =
+                    "⌃";
+
+            }
+
+            else {
+
+                serviceArrow.textContent =
+                    "⌄";
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   TREATMENT INFORMATION
+========================================================= */
+
+const treatmentData = {
+
+
+    /* =====================================================
+       HYDRA FACIAL
+    ===================================================== */
+    hydra: {
+    label: "DEEP CLEANSING & SKIN HYDRATION",
+    title: "Hydra Facial",
+
+    image: "assets/videos/images/hydra.jpg",
+
+    description:
+        "Hydra Facial is a non-invasive skin treatment designed to deeply cleanse, exfoliate and hydrate the skin. It helps remove surface impurities and supports smoother, fresher and more radiant-looking skin. The treatment can be personalised according to your skin type and individual concerns.",
+
+    steps: [
+        "Cleansing – The skin is gently cleansed to remove makeup, oil and surface impurities.",
+        "Exfoliation – Dead surface skin cells are gently removed to reveal fresher-looking skin.",
+        "Extraction – Pores are cleansed to help remove excess oil and impurities.",
+        "Hydration – Hydrating solutions and nourishing ingredients are applied to replenish the skin.",
+        "Protection – The skin is finished with suitable skincare products to leave it feeling fresh and refreshed."
+    ],
+
+    benefits: [
+        "Deeply cleanses the skin",
+        "Helps remove surface impurities and excess oil",
+        "Supports smoother-looking skin texture",
+        "Provides hydration and nourishment",
+        "Helps improve the appearance of dull-looking skin",
+        "Enhances natural-looking skin radiance",
+        "Non-invasive treatment with minimal downtime"
+    ],
+
+    results:
+        "After treatment, the skin may appear cleaner, smoother, hydrated and more refreshed. Results can vary depending on individual skin condition and skincare routine.",
+
+    consultation:
+        "Our experts assess your skin type and concerns before selecting the most suitable Hydra Facial approach for you."
+},
+
+
+
+    /* =====================================================
+       CARBON LASER
+    ===================================================== */
+    carbon: {
+    label: "LASER FACIAL & SKIN REJUVENATION",
+    title: "Carbon Laser Facial",
+
+    image: "assets/videos/images/carbon.jpg",
+
+    description:
+        "Carbon Laser Facial is an advanced skin-rejuvenation treatment that combines a carbon-based facial application with laser technology. It is designed to help improve the appearance of pores, excess oil, uneven skin tone and dull-looking skin while supporting a smoother and more refreshed complexion.",
+
+    steps: [
+        "Skin Preparation – The skin is cleansed thoroughly to remove makeup, oil and surface impurities.",
+        "Carbon Application – A thin layer of carbon-based solution is applied evenly over the treatment area.",
+        "Carbon Activation – The carbon solution interacts with the laser energy and helps target surface impurities and excess oil.",
+        "Laser Treatment – Controlled laser energy is used over the treated area to support skin resurfacing and rejuvenation.",
+        "Finishing Care – The skin is cleansed and suitable soothing or protective skincare is applied."
+    ],
+
+    benefits: [
+        "Helps improve the appearance of enlarged pores",
+        "Supports smoother-looking skin texture",
+        "Helps manage the appearance of excess oil",
+        "Helps improve uneven-looking skin tone",
+        "Refreshes dull-looking skin",
+        "Supports a clearer and more radiant-looking complexion",
+        "Non-surgical treatment with minimal downtime"
+    ],
+
+    results:
+        "The skin may appear fresher, smoother and more refined after treatment. The number of sessions and results vary depending on individual skin condition and treatment goals.",
+
+    consultation:
+        "Our doctor evaluates your skin type, concerns and treatment goals before recommending the appropriate Carbon Laser Facial protocol."
+},
+    /* =====================================================
+       CHEMICAL PEEL
+    ===================================================== */
+    peel: {
+    label: "SKIN RESURFACING & RENEWAL",
+    title: "Chemical Peeling",
+
+    image: "assets/videos/images/peel.jpg",
+
+    description:
+        "Chemical peeling is a professionally supervised skin-resurfacing treatment that uses selected exfoliating agents to remove damaged or dead surface skin cells. It helps reveal fresher-looking skin and may improve the appearance of uneven skin tone, dullness, pigmentation and certain acne marks.",
+
+    treatmentAreas: [
+        "Face",
+        "Neck, when clinically appropriate",
+        "Areas with uneven-looking skin tone",
+        "Areas with dull or rough-looking skin texture"
+    ],
+
+    benefits: [
+        "Removes dead surface skin cells",
+        "Helps improve uneven-looking skin tone",
+        "Supports smoother-looking skin texture",
+        "Helps improve the appearance of dull skin",
+        "May help reduce the appearance of certain acne marks",
+        "Supports fresher and more radiant-looking skin",
+        "Treatment can be selected according to individual skin needs"
+    ],
+
+    results:
+        "Depending on the type of peel and individual skin response, the skin may gradually appear smoother, fresher and more even-looking. Recovery and results vary according to the peel selected and individual skin condition.",
+
+    consultation:
+        "Chemical peels are selected according to skin type, concerns and treatment goals. Our doctor evaluates your skin and recommends the appropriate peel and treatment protocol."
+},
+
+
+    /* =====================================================
+       SKIN BRIGHTENING
+    ===================================================== */
+    brightening: {
+    label: "SKIN BRIGHTENING & RADIANCE",
+    title: "Skin Brightening & Fairness",
+
+    image: "assets/videos/images/fairness.jpg",
+
+    description:
+        "Our personalised skin-brightening treatment is designed to improve the appearance of dullness, tanning and uneven-looking skin tone while supporting your skin's natural radiance. The treatment approach is selected according to individual skin condition, concerns and aesthetic goals.",
+
+    treatmentAreas: [
+        "Face",
+        "Neck, when clinically appropriate",
+        "Areas affected by tanning",
+        "Areas with uneven-looking skin tone"
+    ],
+
+    benefits: [
+        "Helps improve the appearance of uneven skin tone",
+        "Supports a brighter and more radiant-looking complexion",
+        "Helps improve the appearance of tanning",
+        "Refreshes dull-looking skin",
+        "Supports smoother and healthier-looking skin",
+        "Personalised according to individual skin concerns",
+        "Designed to enhance the skin's natural-looking radiance"
+    ],
+
+    results:
+        "With an appropriate treatment plan and skincare routine, the skin may appear brighter, fresher and more even-looking. Results vary depending on individual skin condition and treatment response.",
+
+    consultation:
+        "Every skin type is different. Our doctor evaluates your skin condition, pigmentation, tanning and overall concerns before recommending a personalised skin-brightening treatment plan."
+}, 
+
+    /* =====================================================
+       LASER HAIR REDUCTION
+    ===================================================== */
+    /* =====================================================
+   LASER HAIR REDUCTION
+===================================================== */
+
+lhr: {
+
+    label:
+        "HAIR REDUCTION & SKIN REJUVENATION",
+
+    title:
+        "Hair Reduction & Skin Rejuvenation",
+
+    image:
+        "assets/videos/images/laser hair redu.jpg",
+
+    description:
+        "Advanced Diode Laser Technology for Smoother, Hair-Free Skin. Experience advanced hair reduction with our Diode Laser technology, designed to target unwanted hair at the follicle and provide effective, long-term hair reduction with a comfortable treatment experience. Along with hair reduction, laser-based skin treatments can help improve the appearance of uneven skin tone, tanning, and rough skin texture, leaving your skin looking smoother, clearer, and more refreshed.",
+
+    benefits: [
+
+        "Advanced Diode Laser Technology for effective hair reduction",
+
+        "Helps reduce unwanted facial and body hair",
+
+        "Suitable for multiple treatment areas",
+
+        "Helps achieve smoother-looking skin",
+
+        "Can help improve the appearance of tanning and uneven skin tone",
+
+        "Helps improve skin texture and overall appearance",
+
+        "Quick treatment sessions with minimal downtime",
+
+        "Designed for a more comfortable treatment experience",
+
+        "Smooth Skin. Reduced Hair. Greater Confidence."
+
+    ]
+
+},
+
+
+
+    /* =====================================================
+       BOTOX
+    ===================================================== */
+    botox: {
+    label: "WRINKLE REDUCTION & FACIAL REJUVENATION",
+    title: "Botox Treatment for Wrinkle Reduction",
+
+    image: "assets/videos/images/botox.jpg",
+
+    description:
+        "Smooth, Refreshed & Youthful-Looking Skin. Botox treatment is a popular non-surgical aesthetic procedure used to temporarily reduce the appearance of dynamic facial wrinkles and fine lines caused by repeated muscle movements. Botulinum toxin works by temporarily relaxing targeted muscles, helping soften the appearance of wrinkles while maintaining a natural-looking facial expression when appropriately administered.",
+
+    treatmentAreas: [
+        "Forehead lines",
+        "Frown lines between the eyebrows",
+        "Crow’s feet around the eyes",
+        "Bunny lines on the nose",
+        "Lip lines, when clinically appropriate",
+        "Chin lines and dimpling",
+        "Neck bands, in selected cases"
+    ],
+
+    benefits: [
+        "Helps reduce the appearance of fine lines and wrinkles",
+        "Creates a smoother-looking complexion",
+        "Gives the face a more refreshed and youthful appearance",
+        "Non-surgical treatment with minimal downtime",
+        "Quick procedure with a personalized treatment plan",
+        "Can provide natural-looking results when performed by a qualified medical professional"
+    ],
+
+    results:
+        "Some improvement may become noticeable within a few days, with results generally developing over approximately 1–2 weeks. The effects are temporary, and the duration varies depending on the treatment area, dosage, individual muscle activity, and other factors.",
+
+    consultation:
+        "Every face is different. Our doctor evaluates your facial structure, muscle movement, skin condition, and aesthetic goals before creating a personalized Botox treatment plan. Get expert guidance and discover whether Botox is suitable for your aesthetic goals.",
+
+    location:
+        "Marmm Cosmetic Centre, Indore"
+},
+
+
+
+    /* =====================================================
+       ANTI AGEING
+    ===================================================== */
+    antiageing: {
+    label: "ANTI-AGEING & SKIN REJUVENATION",
+    title: "Anti-Ageing Treatment",
+    image: "assets/videos/images/glutathione.jpg",
+    description:
+      "Advanced Anti-Ageing Treatment designed to support a brighter, smoother and more youthful-looking appearance. The treatment focuses on improving the overall appearance of dullness, uneven skin tone and signs of ageing while supporting skin rejuvenation and a fresh, radiant look.",
+    benefits: [
+      "✨ Helps improve the appearance of fine lines and wrinkles",
+      "🌿 Supports smoother and healthier-looking skin",
+      "💧 Helps improve skin hydration and freshness",
+      "🌟 Supports a brighter and more radiant complexion",
+      "🧴 Helps improve the appearance of uneven skin tone",
+      "⏳ Supports overall skin rejuvenation",
+      "💫 Helps refresh dull-looking skin",
+      "✨ Promotes a smoother, youthful-looking appearance"
+    ],
+    consultation:
+      "Treatment suitability and the recommended protocol depend on your individual skin condition, concerns and treatment goals. Our doctor will assess your skin and recommend the most suitable anti-ageing treatment for you."
+},
+    /* =====================================================
+      fillers
+    ===================================================== */
+fillers: {
+    label: "FACIAL VOLUME & CONTOURING",
+    title: "Derma Fillers",
+
+    image: "assets/videos/images/dermal-fillers.jpg",
+
+    description:
+        "Natural Volume, Youthful Contours & Facial Rejuvenation. Dermal fillers are smooth gels injected beneath the skin to restore lost volume, refine facial contours, and soften the appearance of static wrinkles. Treatment is tailored to your unique facial features and aesthetic goals.",
+
+    treatmentAreas: [
+        "Lips – Definition, subtle volume, and hydration",
+        "Cheeks & Midface – Restores youthful-looking volume and enhances contours",
+        "Under-Eye / Tear Troughs – Helps reduce the appearance of hollows",
+        "Nasolabial Folds & Marionette Lines – Helps soften smile and laugh lines",
+        "Jawline & Chin – Defines facial structure and helps balance the profile"
+    ],
+
+    benefits: [
+        "Instant, visible results with no surgical downtime",
+        "Restores natural-looking facial volume",
+        "Helps improve facial contours and definition",
+        "Custom-tailored to your unique facial anatomy",
+        "Non-surgical facial rejuvenation",
+        "Designed to create natural-looking results"
+    ],
+
+    consultation:
+        "Every face is different. Our doctor evaluates your facial structure, skin condition, and aesthetic goals before recommending the most suitable filler treatment and treatment areas."
+},
+}
+/* =========================================================
+   POPUP ELEMENTS
+========================================================= */
+
+const modal =
+    document.getElementById(
+        "treatmentModal"
+    );
+
+const modalOverlay =
+    document.getElementById(
+        "modalOverlay"
+    );
+
+const modalClose =
+    document.getElementById(
+        "modalClose"
+    );
+
+const modalImage =
+    document.getElementById(
+        "modalImage"
+    );
+
+const modalLabel =
+    document.getElementById(
+        "modalLabel"
+    );
+
+const modalTitle =
+    document.getElementById(
+        "modalTitle"
+    );
+
+const modalDescription =
+    document.getElementById(
+        "modalDescription"
+    );
+const modalSteps =
+    document.getElementById(
+        "modalSteps"
+    );
+const modalBenefits =
+    document.getElementById(
+        "modalBenefits"
+    );
+
+
+
+/* =========================================================
+   OPEN POPUP
+========================================================= */
+
+function openTreatmentModal(
+    treatmentKey
+) {
+
+    const treatment =
+        treatmentData[
+            treatmentKey
+        ];
+
+
+    if (
+        !treatment ||
+        !modal
+    ) {
+
+        return;
+
+    }
+
+
+    /* IMAGE */
+
+    modalImage.src =
+        treatment.image;
+
+    modalImage.alt =
+        treatment.title;
+
+
+    /* LABEL */
+
+    modalLabel.textContent =
+        treatment.label;
+
+
+    /* TITLE */
+
+    modalTitle.textContent =
+        treatment.title;
+
+
+    /* DESCRIPTION */
+
+    modalDescription.textContent =
+        treatment.description;
+
+    /* TREATMENT STEPS */
+
+if (modalSteps) {
+
+    modalSteps.innerHTML = "";
+
+    if (treatment.steps && treatment.steps.length) {
+
+        treatment.steps.forEach(
+            function (step) {
+
+                const li =
+                    document.createElement("li");
+
+                li.textContent = step;
+
+                modalSteps.appendChild(li);
+
+            }
+        );
+
+    }
+
+}
+    /* BENEFITS */
+
+    modalBenefits.innerHTML =
+        "";
+
+
+    treatment.benefits.forEach(
+        function (benefit) {
+
+            const li =
+                document.createElement(
+                    "li"
+                );
+
+            li.textContent =
+                benefit;
+
+            modalBenefits.appendChild(
+                li
+            );
+
+        }
+    );
+
+
+    /* SHOW MODAL */
+
+    modal.classList.add(
+        "active"
+    );
+
+
+    modal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+}
+
+
+
+/* =========================================================
+   CLOSE POPUP
+========================================================= */
+
+function closeTreatmentModal() {
+
+    if (!modal) {
+        return;
+    }
+
+
+    modal.classList.remove(
+        "active"
+    );
+
+
+    modal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+}
+
+
+
+/* =========================================================
+   VIEW DETAILS BUTTONS
+========================================================= */
+
+const viewButtons =
+    document.querySelectorAll(
+        ".view-details-btn"
+    );
+
+
+viewButtons.forEach(
+    function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const treatmentKey =
+                    button.getAttribute(
+                        "data-treatment"
+                    );
+
+
+                openTreatmentModal(
+                    treatmentKey
+                );
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   X CLOSE BUTTON
+========================================================= */
+
+if (modalClose) {
+
+    modalClose.addEventListener(
+        "click",
+        closeTreatmentModal
+    );
+
+}
+
+
+
+/* =========================================================
+   CLOSE WHEN CLICKING DARK BACKGROUND
+========================================================= */
+
+if (modalOverlay) {
+
+    modalOverlay.addEventListener(
+        "click",
+        closeTreatmentModal
+    );
+
+}
+
+
+
+/* =========================================================
+   ESC KEY CLOSE
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Escape" &&
+            modal &&
+            modal.classList.contains(
+                "active"
+            )
+        ) {
+
+            closeTreatmentModal();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   CLOSE MOBILE MENU AFTER LINK CLICK
+========================================================= */
+
+const mobileLinks =
+    document.querySelectorAll(
+        ".mobile-menu a"
+    );
+
+
+mobileLinks.forEach(
+    function (link) {
+
+        link.addEventListener(
+            "click",
+            function () {
+
+                if (mobileMenu) {
+
+                    mobileMenu.classList.remove(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   IMAGE FALLBACK
+========================================================= */
+
+const allImages =
+    document.querySelectorAll(
+        "img"
+    );
+
+
+allImages.forEach(
+    function (image) {
+
+        image.addEventListener(
+            "error",
+            function () {
+
+                if (
+                    !this.dataset.fallback &&
+                    !this.src.includes(
+                        "skin def.jpg"
+                    )
+                ) {
+
+                    this.dataset.fallback =
+                        "true";
+
+
+                    this.src =
+                        "assets/videos/images/skin def.jpg";
+
+                }
+
+            }
+        );
+
+    }
+);
