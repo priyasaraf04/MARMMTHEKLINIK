@@ -17004,3 +17004,141 @@ body {
     }
 
 }
+/* =========================================================
+   GALLERY ZOOM OVERRIDE
+========================================================= */
+
+.result-card .image-view-btn {
+    position: absolute !important;
+
+    top: 12px !important;
+    right: 12px !important;
+
+    width: 36px !important;
+    height: 36px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    z-index: 20 !important;
+
+    cursor: pointer !important;
+
+    border: none !important;
+    border-radius: 50% !important;
+
+    background: rgba(255,255,255,0.96) !important;
+
+    color: #0b2345 !important;
+
+    transition: 0.25s ease !important;
+}
+
+.result-card .image-view-btn:hover {
+    background: #f5a900 !important;
+    transform: scale(1.08) !important;
+}
+
+
+/* POPUP */
+
+.gallery-lightbox {
+    position: fixed !important;
+
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 30px !important;
+
+    background: rgba(5,15,28,0.90) !important;
+
+    opacity: 0 !important;
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+
+    z-index: 999999 !important;
+
+    transition: opacity 0.25s ease !important;
+}
+
+.gallery-lightbox.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+
+.lightbox-content {
+    position: relative !important;
+
+    width: min(1000px, 92vw) !important;
+
+    max-height: 90vh !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+
+.lightbox-content img {
+    display: block !important;
+
+    width: auto !important;
+    height: auto !important;
+
+    max-width: 92vw !important;
+    max-height: 85vh !important;
+
+    object-fit: contain !important;
+
+    border-radius: 10px !important;
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,0.45) !important;
+}
+
+
+.lightbox-close {
+    position: fixed !important;
+
+    top: 22px !important;
+    right: 25px !important;
+
+    width: 44px !important;
+    height: 44px !important;
+
+    border: none !important;
+    border-radius: 50% !important;
+
+    background: #f5a900 !important;
+
+    color: #0b2345 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    cursor: pointer !important;
+
+    z-index: 1000000 !important;
+}
+
+
+body.gallery-popup-open {
+    overflow: hidden !important;
+}

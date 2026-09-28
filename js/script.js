@@ -2067,3 +2067,198 @@ allImages.forEach(
 
     }
 );
+/* =========================================================
+   GALLERY IMAGE ZOOM - OVERRIDE
+========================================================= */
+
+(function () {
+
+    function initGalleryZoom() {
+
+        const lightbox = document.getElementById("galleryLightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const closeButton = document.getElementById("lightboxClose");
+
+        if (!lightbox || !lightboxImage) {
+            return;
+        }
+
+        const buttons = document.querySelectorAll(
+            ".result-card .image-view-btn"
+        );
+
+        buttons.forEach(function (button) {
+
+            /* Prevent duplicate event listeners */
+
+            if (button.dataset.zoomReady === "true") {
+                return;
+            }
+
+            button.dataset.zoomReady = "true";
+
+
+            button.addEventListener("click", function (event) {
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                const card = button.closest(".result-card");
+
+                if (!card) {
+                    return;
+                }
+
+                const image = card.querySelector(
+                    ".result-image img"
+                );
+
+                if (!image) {
+                    return;
+                }
+
+
+                /* Put clicked image inside popup */
+
+                lightboxImage.src = image.currentSrc || image.src;
+
+                lightboxImage.alt =
+                    image.alt || "Before and After Result";
+
+
+                /* Open popup */
+
+                lightbox.classList.add("active");
+
+                document.body.classList.add(
+                    "gallery-popup-open"
+                );
+
+            });
+
+        });
+
+
+        /* Close button */
+
+        if (
+            closeButton &&
+            closeButton.dataset.closeReady !== "true"
+        ) {
+
+            closeButton.dataset.closeReady = "true";
+
+            closeButton.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    closeGalleryZoom();
+
+                }
+            );
+
+        }
+
+
+        /* Close when clicking dark background */
+
+        if (
+            lightbox.dataset.backgroundReady !== "true"
+        ) {
+
+            lightbox.dataset.backgroundReady = "true";
+
+            lightbox.addEventListener(
+                "click",
+                function (event) {
+
+                    if (event.target === lightbox) {
+
+                        closeGalleryZoom();
+
+                    }
+
+                }
+            );
+
+        }
+
+    }
+
+
+    function closeGalleryZoom() {
+
+        const lightbox =
+            document.getElementById("galleryLightbox");
+
+        const lightboxImage =
+            document.getElementById("lightboxImage");
+
+
+        if (!lightbox) {
+            return;
+        }
+
+
+        lightbox.classList.remove("active");
+
+        document.body.classList.remove(
+            "gallery-popup-open"
+        );
+
+
+        if (lightboxImage) {
+            lightboxImage.src = "";
+        }
+
+    }
+
+
+    /* ESC key */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Escape") {
+
+                const lightbox =
+                    document.getElementById(
+                        "galleryLightbox"
+                    );
+
+                if (
+                    lightbox &&
+                    lightbox.classList.contains("active")
+                ) {
+
+                    closeGalleryZoom();
+
+                }
+
+            }
+
+        }
+    );
+
+
+    /* Initial load */
+
+    if (document.readyState === "loading") {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            initGalleryZoom
+        );
+
+    } else {
+
+        initGalleryZoom();
+
+    }
+
+
+})();
