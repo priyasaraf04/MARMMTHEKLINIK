@@ -17657,3 +17657,202 @@ body.gallery-popup-open {
     }
 
 }
+/* =================================================
+   FINAL MOBILE TOPBAR FIX
+================================================= */
+
+@media (max-width: 768px) {
+
+    /* TOP BAR */
+    .marmm-topbar {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+
+        width: 100% !important;
+        height: 46px !important;
+        min-height: 46px !important;
+
+        padding: 0 6px !important;
+        margin: 0 !important;
+
+        background: #062f55 !important;
+
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+
+        align-items: center !important;
+    }
+
+    /* Remove desktop flex grouping */
+    .marmm-topbar .topbar-left,
+    .marmm-topbar .topbar-right {
+        display: contents !important;
+    }
+
+    /* =================================================
+       LOCATION - HIDE ON MOBILE
+    ================================================= */
+
+    .marmm-topbar .topbar-left > span:nth-child(1) {
+        display: none !important;
+    }
+
+    /* =================================================
+       PHONE
+    ================================================= */
+
+    .marmm-topbar .topbar-left > span:nth-child(2) {
+        display: flex !important;
+
+        width: 100% !important;
+        height: 46px !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        padding: 0 !important;
+        margin: 0 !important;
+
+        gap: 5px !important;
+
+        color: #fff !important;
+        font-size: 10px !important;
+        white-space: nowrap !important;
+
+        border: none !important;
+    }
+
+    .marmm-topbar .topbar-left > span:nth-child(2) i {
+        color: #f5a900 !important;
+        font-size: 13px !important;
+        transform: rotate(180deg) !important;
+    }
+
+    /* =================================================
+       WHATSAPP
+    ================================================= */
+
+    .marmm-topbar .topbar-left > span:nth-child(3) {
+        display: flex !important;
+
+        width: 100% !important;
+        height: 46px !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        padding: 0 !important;
+        margin: 0 !important;
+
+        gap: 5px !important;
+
+        color: #fff !important;
+        font-size: 10px !important;
+        white-space: nowrap !important;
+
+        border: none !important;
+    }
+
+    .marmm-topbar .fa-whatsapp {
+        display: inline-block !important;
+
+        width: auto !important;
+        height: auto !important;
+        min-width: 0 !important;
+
+        padding: 0 !important;
+        margin: 0 !important;
+
+        background: transparent !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+
+        color: #25D366 !important;
+        font-size: 16px !important;
+    }
+
+    /* =================================================
+       NABH - ONLY THIS TRUST ITEM SHOW
+    ================================================= */
+
+    .marmm-topbar .topbar-right .nabh-item {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+
+        width: 100% !important;
+        height: 46px !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        padding: 0 !important;
+        margin: 0 !important;
+
+        gap: 5px !important;
+
+        border: none !important;
+
+        color: #fff !important;
+        font-size: 10px !important;
+
+        white-space: nowrap !important;
+        overflow: hidden !important;
+    }
+
+    /* IMPORTANT: NABH IMAGE SIZE */
+    .marmm-topbar .topbar-right .nabh-item img {
+        display: block !important;
+
+        width: 30px !important;
+        height: 30px !important;
+
+        min-width: 30px !important;
+        max-width: 30px !important;
+
+        min-height: 30px !important;
+        max-height: 30px !important;
+
+        object-fit: contain !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        border-radius: 50% !important;
+    }
+
+    .marmm-topbar .topbar-right .nabh-item span {
+        display: inline !important;
+
+        width: auto !important;
+        height: auto !important;
+
+        font-size: 10px !important;
+        color: #fff !important;
+
+        white-space: nowrap !important;
+    }
+
+    /* =================================================
+       HIDE OTHER TRUST ITEMS
+    ================================================= */
+
+    .marmm-topbar .topbar-right .trust-item:not(.nabh-item) {
+        display: none !important;
+    }
+
+    /* Extra protection */
+    .marmm-topbar .topbar-right > span:not(.nabh-item) {
+        display: none !important;
+    }
+
+    /* =================================================
+       REMOVE ALL OLD MOBILE SPACING
+    ================================================= */
+
+    .marmm-topbar span,
+    .marmm-topbar a {
+        box-sizing: border-box !important;
+    }
+
+}
