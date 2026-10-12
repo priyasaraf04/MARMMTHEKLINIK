@@ -705,8 +705,8 @@ document.addEventListener("keydown", function(event) {
 const facialDetails = {
 
     hydra: {
-        category: "SKIN CARE",
-        title: "Hydra Facial",
+        category: "Navratri Special Offer",
+        title: "5-in-1 Glow Facial",
         image: "assets/videos/images/hydra.jpg",
 
         description:
@@ -715,7 +715,8 @@ const facialDetails = {
         details: [
             "<strong>Focus:</strong> Deep cleansing & hydration",
             "<strong>Best for:</strong> Dull, dry and dehydrated skin",
-            "<strong>Benefits:</strong> Cleanses pores and improves skin radiance",
+            "<strong>Benefits:</strong> Cleanses pores and improves skin radiance"
+            ,
             "<strong>Goal:</strong> Fresh, smooth and hydrated-looking skin"
         ]
     },
@@ -1488,7 +1489,7 @@ const treatmentData = {
 
     consultation:
         "Our doctor evaluates your skin type, concerns and treatment goals before recommending the appropriate Carbon Laser Facial protocol."
-},
+    },
     /* =====================================================
        CHEMICAL PEEL
     ===================================================== */
