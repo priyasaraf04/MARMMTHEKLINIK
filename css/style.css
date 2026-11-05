@@ -17856,3 +17856,35 @@ body.gallery-popup-open {
     }
 
 }
+
+/* OUR TEAM HEADING - LIGHT GOLD OVERRIDE */
+
+.team-section h2 {
+    color: #E2CC9F !important;
+    text-shadow: 0 0 8px rgba(226, 204, 159, 0.12);
+}
+
+/* GOLD DIVIDER */
+.team-section h2::after {
+    background: linear-gradient(
+        90deg,
+        #DCC18A,
+        #F5DFAE,
+        #DCC18A
+    ) !important;
+}
+/* FINAL CTA HEADING - LIGHT CHAMPAGNE GOLD */
+
+.final-cta .cta-content h2 {
+    color: #E2CC9F !important;
+    -webkit-text-fill-color: #E2CC9F !important;
+    opacity: 1 !important;
+}
+/* SPECIAL SKIN OFFERS HEADING COLOR */
+
+.offers-section .offers-content h2,
+.offers-section .offers-content h2 em {
+    color: #E2CC9F !important;
+    -webkit-text-fill-color: #E2CC9F !important;
+    opacity: 1 !important;
+}
